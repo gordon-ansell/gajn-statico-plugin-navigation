@@ -21,7 +21,7 @@
 		"src/"
 	],
 	"dependencies": {
-		"gordon-ansell/gajn-framework": "*"
+		"gajn-framework": "../../framework"
 	},
 	"devDependencies": {},
 	"engines": {
