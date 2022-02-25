@@ -10,7 +10,7 @@ const { string, syslog, GAError } = require('gajn-framework');
 const Navigation = require('./src/Navigation');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
 const debug = require('debug')('Statico:plugin:navigation'),
-      debugf = require('debug')('FStatico:plugin:navigation');
+      debugf = require('debug')('Full.Statico:plugin:navigation');
 
 module.exports = function(config, options = {}) {
 

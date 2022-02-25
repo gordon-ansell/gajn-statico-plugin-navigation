@@ -10,7 +10,7 @@ const { fsutils, GAError, syslog } = require('gajn-framework');
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('Statico:plugin:navigation:Navigation'),
-      debugf = require('debug')('FStatico:plugin:navigation:Navigation');
+      debugf = require('debug')('Full.Statico:plugin:navigation:Navigation');
 
 
 class StaticoNavigationError extends GAError {}
