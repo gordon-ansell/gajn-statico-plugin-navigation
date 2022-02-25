@@ -9,13 +9,15 @@
 const { string, syslog, GAError } = require('gajn-framework');
 const Navigation = require('./src/Navigation');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
+const debug = require('debug')('Statico:plugin:navigation'),
+      debugf = require('debug')('FStatico:plugin:navigation');
 
 module.exports = function(config, options = {}) {
 
     new Navigation(config);
 
     config.addNunjucksShortcode('menu', MenuShortcode);
-    syslog.debug(`Added shortcode to Nunjucks: menu`);
+    debug(`Added shortcode to Nunjucks: menu`);
 
 
     /*

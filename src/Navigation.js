@@ -9,6 +9,9 @@
 const { fsutils, GAError, syslog } = require('gajn-framework');
 const path = require('path');
 const fs = require('fs');
+const debug = require('debug')('Statico:plugin:navigation:Navigation'),
+      debugf = require('debug')('FStatico:plugin:navigation:Navigation');
+
 
 class StaticoNavigationError extends GAError {}
  
@@ -43,9 +46,9 @@ class StaticoNavigationError extends GAError {}
     {
         this.config = cfg;
 
-        syslog.debug(`Intercepted navigation event for: ${tplf.filePath}`, 'statico.navigation');
+        debug(`Intercepted navigation event for: ${tplf.filePath}`);
         if (!tplf || !tplf.data || !tplf.data.navigation) {
-            syslog.debug(`Rejecting navigation event for: ${tplf.filePath} as no relevant data found.`, 'statico.navigation');
+            debug(`Rejecting navigation event for: ${tplf.filePath} as no relevant data found.`);
             return;
         }
 
@@ -82,11 +85,11 @@ class StaticoNavigationError extends GAError {}
         }
 
         if (this.config.navigation[menu][cf.title]) {
-            syslog.debug(`A menu item with the title '${cf.title}' already exists. It will be overwritten.`, 'statico.navigation');
+            debug(`A menu item with the title '${cf.title}' already exists. It will be overwritten.`);
         }
 
         this.config.navigation[menu][cf.title] = cf;
-        syslog.debug(`Pushing menu item ${cf.title} in menu ${menu} for: ${tplf.filePath}`, 'statico.navigation');
+        debug(`Pushing menu item ${cf.title} in menu ${menu} for: ${tplf.filePath}`);
 
     }
  
