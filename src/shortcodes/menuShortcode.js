@@ -6,8 +6,8 @@
  */
 'use strict';
 
-const { NunjucksShortcode, GAError } = require('gajn-framework');
-const syslog = require('gajn-framework/src/logger/syslog');
+const { NunjucksShortcode, GAError } = require('js-framework');
+const syslog = require('js-framework/src/logger/syslog');
 
 class NunjucksShortcodeMenuError extends GAError {}
 

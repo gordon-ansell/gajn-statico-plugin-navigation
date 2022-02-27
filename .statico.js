@@ -6,7 +6,7 @@
  */
 'use strict';
 
-const { string, syslog, GAError } = require('gajn-framework');
+const { string, syslog, GAError } = require('js-framework');
 const Navigation = require('./src/Navigation');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
 const debug = require('debug')('Statico:plugin:navigation'),

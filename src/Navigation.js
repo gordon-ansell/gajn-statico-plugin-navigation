@@ -6,7 +6,7 @@
  */
 'use strict';
 
-const { fsutils, GAError, syslog } = require('gajn-framework');
+const { fsutils, GAError, syslog } = require('js-framework');
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('Statico:plugin:navigation:Navigation'),
