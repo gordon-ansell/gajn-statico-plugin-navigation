@@ -8,6 +8,7 @@
 
 const { string, syslog, GAError } = require('js-framework');
 const Navigation = require('./src/Navigation');
+const pack = require('./package.json');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
 const debug = require('debug')('Statico:plugin:navigation'),
       debugf = require('debug')('Full.Statico:plugin:navigation');
@@ -19,6 +20,7 @@ module.exports = function(config, options = {}) {
     config.addNunjucksShortcode('menu', MenuShortcode);
     debug(`Added shortcode to Nunjucks: menu`);
 
+    syslog.notice(`Statico navigation plugin version ${pack.version} loaded.`);
 
     /*
     let scssCfg = {
