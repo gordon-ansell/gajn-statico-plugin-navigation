@@ -21,7 +21,7 @@
 		"src/"
 	],
 	"dependencies": {
-        "debug": "*",
+        "debug": "4.3.4",
 		"js-framework": "gordon-ansell/js-framework"
 	},
 	"devDependencies": {},
