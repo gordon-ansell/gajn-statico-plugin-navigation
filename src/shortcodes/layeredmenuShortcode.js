@@ -39,10 +39,10 @@ class LayeredMenuShortcode extends NunjucksShortcode
 
         for (let item of items) {
             if (item.parent) {
-                if (!struct[parent]) {
-                    struct[parent] = [];
+                if (!struct[item.parent]) {
+                    struct[item.parent] = [];
                 }
-                struct[parent].push(item);
+                struct[item.parent].push(item);
             } else {
                 if (!struct._main) {
                     struct._main = [];
