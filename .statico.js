@@ -10,6 +10,7 @@ const { string, syslog, GAError } = require('js-framework');
 const Navigation = require('./src/Navigation');
 const pack = require('./package.json');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
+const LayeredMenuShortcode = require('./src/shortcodes/layeredmenuShortcode');
 const debug = require('debug')('Statico:plugin:navigation'),
       debugf = require('debug')('Full.Statico:plugin:navigation');
 
@@ -19,6 +20,8 @@ module.exports = function(config, options = {}) {
 
     config.addNunjucksShortcode('menu', MenuShortcode);
     debug(`Added shortcode to Nunjucks: menu`);
+    config.addNunjucksShortcode('layeredmenu', LayeredMenuShortcode);
+    debug(`Added shortcode to Nunjucks: layeredmenu`);
 
     syslog.notice(`Statico navigation plugin version ${pack.version} loaded.`);
 
