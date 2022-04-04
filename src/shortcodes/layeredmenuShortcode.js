@@ -55,9 +55,6 @@ class LayeredMenuShortcode extends NunjucksShortcode
             struct[item] = struct[item].sort(this._sortAscCompare);
         }
 
-        syslog.inspect(struct, "error");
-
-
         let ret = '<ul class="menu-items">';
 
         for (let item of struct._main) {
