@@ -65,8 +65,8 @@ class LayeredMenuShortcode extends NunjucksShortcode
 
             if (struct[item.title]) {
                 ret += `<ul class="menu-subitems">`;
-                for (let subitem of Object.keys(struct[item.title])) {
-                    ret += `<li class="subitem"><a class="link" href="${struct[subitem].link}">${struct[subitem].title}</a></li>`;
+                for (let subitem of struct[item.title]) {
+                    ret += `<li class="subitem"><a class="link" href="${subitem.link}">${subitem.title}</a></li>`;
                 }
                 ret += `</ul>`;
             }
