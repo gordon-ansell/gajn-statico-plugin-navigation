@@ -8,6 +8,7 @@
 
 const { NunjucksShortcode, GAError } = require('js-framework');
 const syslog = require('js-framework/src/logger/syslog');
+const path = require('path');
 
 class NunjucksShortcodeMenuError extends GAError {}
 
@@ -56,6 +57,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
         }
 
         let ret = '<ul class="menu-items">';
+        ret += `<li class="home"><a class="link" href="${path.dirname(struct_main[0].link)}">Home</a></li>`;
 
         for (let item of struct._main) {
             ret += `<li><a class="link" href="${item.link}">${item.title}</a></li>`;
