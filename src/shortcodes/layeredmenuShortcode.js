@@ -57,7 +57,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
         }
 
         let ret = '<ul class="menu-items">';
-        ret += `<li class="home"><a class="link" href="${path.dirname(struct_main[0].link)}">Home</a></li>`;
+        ret += `<li class="home"><a class="link" href="${path.dirname(struct._main[0].link)}">Home</a></li>`;
 
         for (let item of struct._main) {
             ret += `<li><a class="link" href="${item.link}">${item.title}</a></li>`;
