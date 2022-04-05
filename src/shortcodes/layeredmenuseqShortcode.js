@@ -52,14 +52,14 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                 curr = article.navigation;
             }
             if (curr) {
-                if (flattened.title === curr.title && flattened.link === curr.link) {
+                if (item.title === curr.title && item.link === curr.link) {
                     if ('prev' === dir) {
                         if (prev) {
-                            return prev;
+                            return `<a href="${prev.link}">${prev.title}</a>`;
                         }
                     } else if ('next' === dir) {
                         if (flattened[count + 1]) {
-                            return flattened[count + 1];
+                            return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title}</a>`;
                         }
                     } 
                 } else {
