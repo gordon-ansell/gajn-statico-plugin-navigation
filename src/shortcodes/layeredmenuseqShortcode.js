@@ -41,12 +41,8 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
 
         let flattened = this.config.layeredMenus[menu];
 
-        //syslog.inspect(flattened, "error", "flattened")
-
         let article = context.ctx;
         let articlenav = article.navigation || null;
-
-        syslog.inspect(articlenav, "error", "articlenav");
 
         let prev = null;
 
@@ -59,19 +55,18 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                 if (item.title === curr.title && item.link === curr.link) {
                     if ('prev' === dir) {
                         if (prev) {
-                            return `<a href="${prev.link}">${prev.title}</a>`;
+                            return `<a href="${prev.link}">&larr; ${prev.title}</a>`;
                         }
                     } else if ('next' === dir) {
                         if (flattened[count + 1]) {
-                            return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title}</a>`;
+                            return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title} &rarr;</a>`;
                         }
                     } 
                 } else {
                     prev = curr;
                 }
             } else {
-                syslog.warning(`No menu match.`);
-                //syslog.inspect(article.navigation, "error", "menu");
+                syslog.warning(`No menu match for 'layeredmenuseq' shortcode, menu = ${menu}.`);
             }
             count++;
         }
