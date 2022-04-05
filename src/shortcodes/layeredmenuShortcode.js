@@ -75,7 +75,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
         let article = context.ctx;
         let curr = null;
         if (article.navigation && article.navigation['menu'] === menu) {
-            curr = article.navigation['menu'];
+            curr = article.navigation;
         }
 
         syslog.inspect(curr, "error", "curr");
