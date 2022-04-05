@@ -46,7 +46,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         let article = context.ctx;
         let articlenav = article.navigation || null;
 
-        syslog.inspect(articlenav, "error", "articlenav");
+        //syslog.inspect(articlenav, "error", "articlenav");
 
         let prev = null;
 
@@ -54,7 +54,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         for (let item of flattened) {
             let curr = null;
             syslog.warning(`about to match ${articlenav.menu} with ${menu}`)
-            if (articlenav && articlenav.menu && articlenav.menu === menu) {
+            if (articlenav && articlenav['menu'] && articlenav['menu'] === menu) {
                 curr = articlenav;
                 if (item.title === curr.title && item.link === curr.link) {
                     if ('prev' === dir) {
