@@ -72,16 +72,40 @@ class LayeredMenuShortcode extends NunjucksShortcode
         }
         this.config.layeredMenus[menu] = flattened;
 
+        let article = context.ctx;
+        let curr = null;
+        if (article.navigation && article.navigation['menu'] === menu) {
+            curr = article.navigation['menu'];
+        }
+
         let ret = '<ul class="menu-items">';
-        //ret += `<li class="home"><a class="link" href="${path.dirname(struct._main[0].link)}">Home</a></li>`;
 
         for (let item of struct._main) {
-            ret += `<li><a class="link" href="${item.link}">${item.title}</a></li>`;
+            let isActive = false;
+            if (curr && curr.title === item.title && curr.link == item.link) {
+                isActive = true;
+            }
+
+            let classes = '';
+            if (isActive) {
+                classes = `class="active"`;
+            }
+
+            ret += `<li${classes}><a class="link" href="${item.link}">${item.title}</a></li>`;
 
             if (struct[item.title]) {
                 ret += `<li><ul class="menu-subitems">`;
                 for (let subitem of struct[item.title]) {
-                    ret += `<li class="subitem"><a class="link" href="${subitem.link}">${subitem.title}</a></li>`;
+                    let isActive = false;
+                    if (curr && curr.title === item.title && curr.link == item.link) {
+                        isActive = true;
+                    }
+
+                    let classes = '';
+                    if (isActive) {
+                        classes = ` active`;
+                    }
+                    ret += `<li class="subitem${classes}"><a class="link" href="${subitem.link}">${subitem.title}</a></li>`;
                 }
                 ret += `</ul></li>`;
             }
