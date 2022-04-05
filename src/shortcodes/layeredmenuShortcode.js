@@ -78,6 +78,8 @@ class LayeredMenuShortcode extends NunjucksShortcode
             curr = article.navigation;
         }
 
+        let ret = '';
+
         for (let item of struct._main) {
             let isActive = false;
             if (curr && curr.title === item.title && curr.link == item.link) {
