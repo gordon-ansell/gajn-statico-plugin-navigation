@@ -54,19 +54,24 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         for (let item of flattened) {
             let curr = null;
             syslog.warning(`about to match ${articlenav['menu']} with ${menu}`)
-            curr = articlenav;
-            if (item.title === curr.title && item.link === curr.link) {
-                if ('prev' === dir) {
-                    if (prev) {
-                        return `<a href="${prev.link}">${prev.title}</a>`;
-                    }
-                } else if ('next' === dir) {
-                    if (flattened[count + 1]) {
-                        return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title}</a>`;
-                    }
-                } 
+            if (articlenav && articlenav['menu'] && articlenav['menu'] === menu) {
+                curr = articlenav;
+                if (item.title === curr.title && item.link === curr.link) {
+                    if ('prev' === dir) {
+                        if (prev) {
+                            return `<a href="${prev.link}">${prev.title}</a>`;
+                        }
+                    } else if ('next' === dir) {
+                        if (flattened[count + 1]) {
+                            return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title}</a>`;
+                        }
+                    } 
+                } else {
+                    prev = curr;
+                }
             } else {
-                prev = curr;
+                syslog.warning(`No menu match.`);
+                //syslog.inspect(article.navigation, "error", "menu");
             }
             count++;
         }

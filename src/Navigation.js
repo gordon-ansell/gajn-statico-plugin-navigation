@@ -59,7 +59,7 @@ class StaticoNavigationError extends GAError {}
             throw new StaticoNavigationError(`No navigation menu specified for: ${tplf.filePath}`);
         } else {
             menu = cf.menu;
-            delete cf.menu;
+            //delete cf.menu;
         }
 
         if (!cf.title) {
