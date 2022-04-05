@@ -88,7 +88,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
 
             let classes = '';
             if (isActive) {
-                classes = ` class="active"`;
+                //classes = ` class="active"`;
             }
 
             ret += `<li${classes}><a class="link" href="${item.link}">${item.title}</a></li>`;
@@ -103,7 +103,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
 
                     let classes = '';
                     if (isActive) {
-                        classes = ` active`;
+                        //classes = ` active`;
                     }
                     ret += `<li class="subitem${classes}"><a class="link" href="${subitem.link}">${subitem.title}</a></li>`;
                 }
