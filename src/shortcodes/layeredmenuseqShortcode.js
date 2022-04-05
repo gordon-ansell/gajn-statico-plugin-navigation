@@ -63,7 +63,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                         }
                     } 
                 } else {
-                    prev = curr;
+                    prev = item;
                 }
             } else {
                 syslog.warning(`No menu match for 'layeredmenuseq' shortcode, menu = ${menu}.`);
