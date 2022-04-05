@@ -78,6 +78,8 @@ class LayeredMenuShortcode extends NunjucksShortcode
             curr = article.navigation['menu'];
         }
 
+        syslog.inspect(curr, "error", "curr");
+
         let ret = '<ul class="menu-items">';
 
         for (let item of struct._main) {
@@ -97,7 +99,7 @@ class LayeredMenuShortcode extends NunjucksShortcode
                 ret += `<li><ul class="menu-subitems">`;
                 for (let subitem of struct[item.title]) {
                     let isActive = false;
-                    if (curr && curr.title === item.title && curr.link == item.link) {
+                    if (curr && curr.title === subitem.title && curr.link == subitem.link) {
                         isActive = true;
                     }
 
