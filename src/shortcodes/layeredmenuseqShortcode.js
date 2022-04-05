@@ -64,7 +64,8 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                     prev = curr;
                 }
             } else {
-                syslog.warming(`No menu match.`);
+                syslog.warning(`No menu match.`);
+                syslog.inspect(article.navigation, "error");
             }
             count++;
         }
