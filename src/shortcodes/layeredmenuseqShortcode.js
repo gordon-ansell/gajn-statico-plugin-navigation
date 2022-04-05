@@ -46,7 +46,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         let article = context.ctx;
         let articlenav = article.navigation || null;
 
-        //syslog.inspect(articlenav, "error", "articlenav");
+        syslog.inspect(articlenav, "error", "articlenav");
 
         let prev = null;
 
