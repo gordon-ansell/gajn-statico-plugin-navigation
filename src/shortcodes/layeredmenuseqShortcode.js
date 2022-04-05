@@ -41,7 +41,11 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
 
         let flattened = this.config.layeredMenus[menu];
 
+        syslog.inspect(flattened, "error")
+
         let article = context.ctx;
+
+        syslog.inspect(article.navigation, "error");
 
         let prev = null;
 
@@ -65,7 +69,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                 }
             } else {
                 syslog.warning(`No menu match.`);
-                syslog.inspect(article.navigation, "error");
+                //syslog.inspect(article.navigation, "error");
             }
             count++;
         }
