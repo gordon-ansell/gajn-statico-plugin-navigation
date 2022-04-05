@@ -56,6 +56,22 @@ class LayeredMenuShortcode extends NunjucksShortcode
             struct[item] = struct[item].sort(this._sortAscCompare);
         }
 
+        let flattened = [];
+
+        for (let item of struct._main) {
+            flattened.push(item);
+            if (struct[item.title]) {
+                for (let subitem of struct[item.title]) {
+                    flattened.push(subitem);
+                }
+            }
+        }
+
+        if (!this.config.layeredMenus) {
+            this.config.layeredMenus = {};
+        }
+        this.config.layeredMenus[menu] = flattened;
+
         let ret = '<ul class="menu-items">';
         ret += `<li class="home"><a class="link" href="${path.dirname(struct._main[0].link)}">Home</a></li>`;
 
