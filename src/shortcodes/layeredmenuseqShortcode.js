@@ -52,6 +52,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         let count = 0;
         for (let item of flattened) {
             let curr = null;
+            syslog.warning(`about to match ${article.navigation.menu} with ${menu}`)
             if (article.navigation && article.navigation.menu && article.navigation.menu === menu) {
                 curr = article.navigation;
                 if (item.title === curr.title && item.link === curr.link) {
@@ -69,7 +70,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                 }
             } else {
                 syslog.warning(`No menu match.`);
-                //syslog.inspect(article.navigation, "error");
+                //syslog.inspect(article.navigation, "error", "menu");
             }
             count++;
         }
