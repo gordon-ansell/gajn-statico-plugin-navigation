@@ -53,7 +53,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         let count = 0;
         for (let item of flattened) {
             let curr = null;
-            syslog.warning(`about to match ${articlenav.menu} with ${menu}`)
+            syslog.warning(`about to match ${articlenav['menu']} with ${menu}`)
             if (articlenav && articlenav['menu'] && articlenav['menu'] === menu) {
                 curr = articlenav;
                 if (item.title === curr.title && item.link === curr.link) {
