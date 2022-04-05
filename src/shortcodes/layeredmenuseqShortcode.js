@@ -50,8 +50,6 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
             let curr = null;
             if (article.navigation && article.navigation.menu && article.navigation.menu === menu) {
                 curr = article.navigation;
-            }
-            if (curr) {
                 if (item.title === curr.title && item.link === curr.link) {
                     if ('prev' === dir) {
                         if (prev) {
@@ -65,6 +63,8 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                 } else {
                     prev = curr;
                 }
+            } else {
+                syslog.warming(`No menu match.`);
             }
             count++;
         }
