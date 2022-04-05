@@ -41,12 +41,12 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
 
         let flattened = this.config.layeredMenus[menu];
 
-        syslog.inspect(flattened, "error", "flattened")
+        //syslog.inspect(flattened, "error", "flattened")
 
         let article = context.ctx;
         let articlenav = article.navigation || null;
 
-        syslog.inspect(articlenav, "error", "article");
+        syslog.inspect(articlenav, "error", "articlenav");
 
         let prev = null;
 
