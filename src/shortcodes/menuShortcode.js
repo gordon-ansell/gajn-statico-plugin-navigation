@@ -37,10 +37,26 @@ class MenuShortcode extends NunjucksShortcode
 
         let sorted = items.sort(this._sortAscCompare);
 
+        let article = context.ctx;
+        let curr = null;
+        if (article.navigation && article.navigation['menu'] === menu) {
+            curr = article.navigation;
+        }
+
         let ret = '<ul class="menu-items">';
 
         for (let item of sorted) {
-            ret += `<li><a class="link" href="${item.link}">${item.title}</a></li>`;
+            let isActive = false;
+            if (curr && curr.title === item.title && curr.link == item.link) {
+                isActive = true;
+            }
+
+            let classes = '';
+            if (isActive) {
+                classes = ` class="active"`;
+            }
+
+            ret += `<li${classes}><a class="link" href="${item.link}">${item.title}</a></li>`;
         }
 
         ret += '</ul>';
