@@ -12,6 +12,7 @@ const pack = require('./package.json');
 const MenuShortcode = require('./src/shortcodes/menuShortcode');
 const LayeredMenuShortcode = require('./src/shortcodes/layeredmenuShortcode');
 const LayeredMenuSeqShortcode = require('./src/shortcodes/layeredmenuseqShortcode');
+const LayeredMenuSubsShortcode = require('./src/shortcodes/layeredmenusubsShortcode');
 const debug = require('debug')('Statico:plugin:navigation'),
       debugf = require('debug')('Full.Statico:plugin:navigation');
 
@@ -25,6 +26,8 @@ module.exports = function(config, options = {}) {
     debug(`Added shortcode to Nunjucks: layeredmenu`);
     config.addNunjucksShortcode('layeredmenuseq', LayeredMenuSeqShortcode);
     debug(`Added shortcode to Nunjucks: layeredmenuseq`);
+    config.addNunjucksShortcode('layeredmenusubs', LayeredMenuSubsShortcode);
+    debug(`Added shortcode to Nunjucks: layeredmenusubs`);
 
     syslog.notice(`Statico navigation plugin version ${pack.version} loaded.`);
 
