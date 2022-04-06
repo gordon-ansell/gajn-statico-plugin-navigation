@@ -51,7 +51,9 @@ class LayeredMenuSubsShortcode extends NunjucksShortcode
         let subs = [];
 
         for (let item of flattened) {
-            if (subsof === item.parent) {
+            if ('_main' === subsof && !item.parent) {
+                subs.push(item);
+            } else if (subsof === item.parent) {
                 subs.push(item);
             }
         }
