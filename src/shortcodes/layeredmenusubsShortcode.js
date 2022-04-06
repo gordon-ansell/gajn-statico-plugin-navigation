@@ -29,6 +29,7 @@ class LayeredMenuSubsShortcode extends NunjucksShortcode
     render(context, args)
     {
         let menu = args[0];
+        syslog.inspect(args, "error");
         let subsof = args[1] || null;
 
         syslog.warning(subsof);
