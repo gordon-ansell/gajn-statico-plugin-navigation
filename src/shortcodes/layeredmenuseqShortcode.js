@@ -55,10 +55,14 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                     if ('prev' === dir) {
                         if (prev) {
                             return `<a href="${prev.link}">&larr; ${prev.title}</a>`;
+                        } else {
+                            return `&nbsp`;
                         }
                     } else if ('next' === dir) {
                         if (flattened[count + 1]) {
                             return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title} &rarr;</a>`;
+                        } else {
+                            return `&bnsp;`;
                         }
                     } 
                 } else {
