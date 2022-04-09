@@ -62,7 +62,7 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
                         if (flattened[count + 1]) {
                             return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title} &rarr;</a>`;
                         } else {
-                            return `&bnsp;`;
+                            return `&nbsp;`;
                         }
                     } 
                 } else {
