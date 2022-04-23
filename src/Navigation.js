@@ -58,7 +58,9 @@ class StaticoNavigationError extends GAError {}
             nav = [nav];
         }
 
-        for (let cf of nav) {
+        for (let cfn in nav) {
+
+            let cf = nav[cfn];
 
             //let cf = tplf.data.navigation;
             let menu;
