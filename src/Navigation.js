@@ -56,9 +56,7 @@ class StaticoNavigationError extends GAError {}
 
         if (!Array.isArray(nav)) {
             nav = [nav];
-        } else {
-            syslog.inspect(nav, "error");
-        }
+        } 
 
         for (let cf of Object.values(nav)) {
 
