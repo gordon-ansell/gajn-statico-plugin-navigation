@@ -46,9 +46,9 @@ class StaticoNavigationError extends GAError {}
     {
         this.config = cfg;
 
-        debug(`Intercepted navigation event for: ${tplf.filePath}`);
+        //debug(`Intercepted navigation event for: ${tplf.filePath}`);
         if (!tplf || !tplf.data || !tplf.data.navigation) {
-            debug(`Rejecting navigation event for: ${tplf.filePath} as no relevant data found.`);
+            //debug(`Rejecting navigation event for: ${tplf.filePath} as no relevant data found.`);
             return;
         }
 
