@@ -49,29 +49,37 @@ class LayeredMenuSeqShortcode extends NunjucksShortcode
         let count = 0;
         for (let item of flattened) {
             let curr = null;
-            if (articlenav && articlenav['menu'] && articlenav['menu'] === menu) {
-                curr = articlenav;
-                if (item.title === curr.title && item.link === curr.link) {
-                    if ('prev' === dir) {
-                        if (prev) {
-                            return `<a href="${prev.link}">&larr; ${prev.title}</a>`;
-                        } else {
-                            return `&nbsp`;
-                        }
-                    } else if ('next' === dir) {
-                        if (flattened[count + 1]) {
-                            return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title} &rarr;</a>`;
-                        } else {
-                            return `&nbsp;`;
-                        }
-                    } 
-                } else {
-                    prev = item;
-                }
-            } else {
-                syslog.warning(`No menu match for 'layeredmenuseq' shortcode, menu = ${menu}.`);
+
+            if (!Array.isArray(articlenav)) {
+                articlenav = [articlenav];
             }
-            count++;
+
+            for (let an of Object.values(articlenav)) {
+
+                if (an && an['menu'] && an['menu'] === menu) {
+                    curr = an;
+                    if (item.title === curr.title && item.link === curr.link) {
+                        if ('prev' === dir) {
+                            if (prev) {
+                                return `<a href="${prev.link}">&larr; ${prev.title}</a>`;
+                            } else {
+                                return `&nbsp`;
+                            }
+                        } else if ('next' === dir) {
+                            if (flattened[count + 1]) {
+                                return `<a href="${flattened[count + 1].link}">${flattened[count + 1].title} &rarr;</a>`;
+                            } else {
+                                return `&nbsp;`;
+                            }
+                        } 
+                    } else {
+                        prev = item;
+                    }
+                } else {
+                    syslog.warning(`No menu match for 'layeredmenuseq' shortcode, menu = ${menu}.`);
+                }
+                count++;
+            }
         }
 
         return null;
