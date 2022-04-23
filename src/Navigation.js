@@ -52,44 +52,53 @@ class StaticoNavigationError extends GAError {}
             return;
         }
 
-        let cf = tplf.data.navigation;
-        let menu;
+        let nav = tplf.data.navigation;
 
-        if (!cf.menu) {
-            throw new StaticoNavigationError(`No navigation menu specified for: ${tplf.filePath}`);
-        } else {
-            menu = cf.menu;
-            //delete cf.menu;
+        if (!Array.isArray(nav)) {
+            nav = [nav];
         }
 
-        if (!cf.title) {
-            if (tplf.data.title) {
-                cf.title = tplf.data.title;
+        for (let cf of nav) {
+
+            //let cf = tplf.data.navigation;
+            let menu;
+
+            if (!cf.menu) {
+                throw new StaticoNavigationError(`No navigation menu specified for: ${tplf.filePath}`);
             } else {
-                cf.title = 'unnamed';
+                menu = cf.menu;
+                //delete cf.menu;
             }
-        }
-        if (!cf.link) {
-            if (tplf.data.permalink) {
-                cf.link = tplf.data.permalink;
-            } else {
-                throw new StaticoNavigationError(`No navigation link found for: ${tplf.filePath}`);
+
+            if (!cf.title) {
+                if (tplf.data.title) {
+                    cf.title = tplf.data.title;
+                } else {
+                    cf.title = 'unnamed';
+                }
             }
-        }
+            if (!cf.link) {
+                if (tplf.data.permalink) {
+                    cf.link = tplf.data.permalink;
+                } else {
+                    throw new StaticoNavigationError(`No navigation link found for: ${tplf.filePath}`);
+                }
+            }
 
-        if (!this.config.navigation) {
-            this.config.navigation = {};
-        }
-        if (!this.config.navigation[menu]) {
-            this.config.navigation[menu] = {};
-        }
+            if (!this.config.navigation) {
+                this.config.navigation = {};
+            }
+            if (!this.config.navigation[menu]) {
+                this.config.navigation[menu] = {};
+            }
 
-        if (this.config.navigation[menu][cf.title]) {
-            debug(`A menu item with the title '${cf.title}' already exists. It will be overwritten.`);
-        }
+            if (this.config.navigation[menu][cf.title]) {
+                debug(`A menu item with the title '${cf.title}' already exists. It will be overwritten.`);
+            }
 
-        this.config.navigation[menu][cf.title] = cf;
-        debug(`Pushing menu item ${cf.title} in menu ${menu} for: ${tplf.filePath}`);
+            this.config.navigation[menu][cf.title] = cf;
+            debug(`Pushing menu item ${cf.title} in menu ${menu} for: ${tplf.filePath}`);
+        }
 
     }
  
