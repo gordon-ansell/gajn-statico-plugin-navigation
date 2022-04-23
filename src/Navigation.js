@@ -92,6 +92,7 @@ class StaticoNavigationError extends GAError {}
             }
             if (!this.config.navigation[menu]) {
                 this.config.navigation[menu] = {};
+                debug(`Creating menu in config for '${menu}'.`);
             }
 
             if (this.config.navigation[menu][cf.title]) {
